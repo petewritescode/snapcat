@@ -10,8 +10,6 @@ export const Logo: React.FC = () => (
       <FontAwesomeIcon icon={faCat} />
     </div>
 
-    <div className={styles.copy}>
-      <span className={styles.highlight}>Purr</span>terest
-    </div>
+    <div className={styles.copy}>Snapcat</div>
   </Link>
 );

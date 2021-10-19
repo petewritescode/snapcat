@@ -43,12 +43,8 @@
 @media (min-width: 500px) {
   .copy {
     display: block;
-    color: var(--color-white-75);
+    color: var(--color-white);
     font-size: 2rem;
     font-weight: bold;
-  }
-
-  .highlight {
-    color: var(--color-white);
   }
 }
