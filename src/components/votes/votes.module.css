@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   height: 40px;
-  background-color: rgba(255, 255, 255, 0.75);
-  border-radius: 20px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-white-75);
+  border-radius: var(--border-radius-l);
+  box-shadow: var(--box-shadow);
 }
 
 .count {

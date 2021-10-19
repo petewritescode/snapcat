@@ -1,6 +1,6 @@
 .gridItem {
   width: 100%;
-  padding: 10px;
+  padding: var(--spacing-s);
 }
 
 @media (min-width: 500px) {

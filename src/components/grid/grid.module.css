@@ -1,5 +1,5 @@
 .grid {
   display: flex;
   flex-wrap: wrap;
-  margin: -10px;
+  margin: calc(-1 * var(--spacing-s));
 }

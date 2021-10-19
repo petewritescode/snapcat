@@ -3,8 +3,8 @@
   height: 7rem;
   margin-right: auto;
   margin-left: auto;
-  border: 5px solid rgba(230, 0, 35, 0.2);
-  border-top-color: #e60023;
+  border: 5px solid var(--color-red-20);
+  border-top-color: var(--color-red);
   border-radius: 50%;
   animation: spin 1s infinite ease-in-out;
 }

@@ -1,18 +1,18 @@
 .link {
-  padding: 10px;
-  color: #ffffff;
+  padding: var(--spacing-s);
+  color: var(--color-white);
   text-decoration: none;
-  border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius-s);
+  background-color: var(--color-black-20);
 }
 
 .link:hover:not(.linkActive) {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: var(--color-black-40);
 }
 
 .linkActive {
-  background-color: #ffffff;
-  color: #e60023;
+  background-color: var(--color-white);
+  color: var(--color-red);
 }
 
 .icon {

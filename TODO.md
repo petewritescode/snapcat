@@ -1,7 +1,5 @@
 # TODO
 
-Add favicon and icons.
-Delete unused files from CRA.
 Add eslint
 Sort out dependencies/dev dependencies.
 Write README

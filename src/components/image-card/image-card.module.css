@@ -4,19 +4,19 @@
   padding-bottom: 100%;
   background-size: cover;
   background-position: 50% 50%;
-  border-radius: 10px;
-  background-color: #999999;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-m);
+  background-color: var(--color-mid-grey);
+  box-shadow: var(--box-shadow);
 }
 
 .favourite {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: var(--spacing-s);
+  right: var(--spacing-s);
 }
 
 .votes {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: var(--spacing-s);
+  right: var(--spacing-s);
 }

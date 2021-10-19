@@ -3,10 +3,10 @@
   max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
-  padding: 40px 20px;
+  padding: var(--spacing-l) var(--spacing-m);
 }
 
 .shallow {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: var(--spacing-m);
+  padding-bottom: var(--spacing-m);
 }

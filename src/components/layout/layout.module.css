@@ -2,8 +2,8 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: #e60023;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-red);
+  box-shadow: var(--box-shadow);
 }
 
 .wrapper {

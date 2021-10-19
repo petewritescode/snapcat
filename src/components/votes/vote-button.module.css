@@ -9,7 +9,7 @@
 }
 
 .active {
-  color: #e60023;
+  color: var(--color-red);
 }
 
 .icon {
