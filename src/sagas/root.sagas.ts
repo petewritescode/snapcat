@@ -1,5 +1,4 @@
 import { all, call, put, takeEvery } from 'redux-saga/effects';
-import { USER_ID } from '../constants/user.constants';
 import {
   addFavourite,
   addImage,
@@ -19,6 +18,9 @@ import { Favourite } from '../types/favourite.type';
 import { Image } from '../types/image.type';
 import { VoteDirection } from '../types/vote-direction.type';
 import { Vote } from '../types/vote.type';
+import { getUserId } from '../utils/get-user-id.util';
+
+const userId = getUserId();
 
 function* getImagesSaga() {
   try {
@@ -112,7 +114,7 @@ function* getVotesSaga() {
           votes.map<Vote>((vote) => ({
             id: vote.id,
             imageId: vote.image_id,
-            isCurrentUser: vote.sub_id === USER_ID,
+            isCurrentUser: vote.sub_id === userId,
             direction: vote.value === 1 ? 'up' : 'down',
           }))
         )

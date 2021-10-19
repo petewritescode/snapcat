@@ -1,0 +1,10 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  background-color: #f2f2f2;
+}

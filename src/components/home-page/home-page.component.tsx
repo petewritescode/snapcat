@@ -1,12 +1,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { favouritesSelectors } from '../../store/favourites/favourites.selectors';
 import { favouritesActions } from '../../store/favourites/favourites.slice';
 import { imagesSelectors } from '../../store/images/images.selectors';
 import { votesSelectors } from '../../store/votes/votes.selectors';
 import { votesActions } from '../../store/votes/votes.slice';
 import { VoteDirection } from '../../types/vote-direction.type';
+import { GridItem } from '../grid/grid-item.component';
+import { Grid } from '../grid/grid.component';
+import { Image } from '../image/image.component';
 import { Loader } from '../loader/loader.component';
+import styles from './home-page.module.css';
 
 export const HomePage: React.FC = () => {
   const dispatch = useDispatch();
@@ -18,8 +23,8 @@ export const HomePage: React.FC = () => {
   const favourites = useSelector(favouritesSelectors.getActiveFavourites);
   const votesLoading = useSelector(votesSelectors.getLoading);
   const votesError = useSelector(votesSelectors.getError);
-  const votes = useSelector(votesSelectors.getActiveVotes);
-  const scores = useSelector(votesSelectors.getScores);
+  const votes = useSelector(votesSelectors.getUserVotes);
+  const voteCounts = useSelector(votesSelectors.getVoteCounts);
 
   const error = imagesError || favouritesError || votesError;
 
@@ -28,18 +33,29 @@ export const HomePage: React.FC = () => {
   }
 
   if (error) {
-    return <>ERROR!</>;
+    return (
+      <div className={styles.message}>
+        Oops! Something went wrong while loading your images. Please refresh the
+        page.
+      </div>
+    );
   }
 
   if (!images.length) {
-    return <>TODO No images yet</>;
+    return (
+      <div className={styles.message}>
+        You don't have any images yet. <Link to="/upload">Upload one now</Link>.
+      </div>
+    );
   }
 
   return (
-    <ul style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap' }}>
+    <Grid>
       {images.map(({ id, url }) => {
         const favourite = favourites.find(({ imageId }) => imageId === id);
-        const vote = votes.find(({ imageId }) => imageId === id);
+        const vote = votes.find(
+          ({ imageId, isCurrentUser }) => imageId === id && isCurrentUser
+        );
 
         const handleFavourite = () => {
           if (favouritesLoading) {
@@ -67,36 +83,19 @@ export const HomePage: React.FC = () => {
         };
 
         return (
-          <li key={id}>
-            <div
-              style={{
-                margin: 20,
-                width: 250,
-                height: 250,
-                backgroundImage: `url(${url})`,
-                backgroundSize: 'cover',
-                border: '1px solid black',
-              }}
-            >
-              <button onClick={handleFavourite}>
-                {favourite ? 'UNFAV' : 'FAV'}
-              </button>
-
-              <hr />
-
-              <button onClick={handleVote('up')}>
-                {vote?.direction === 'up' ? 'X' : ''} UP
-              </button>
-
-              {scores[id] || '0'}
-
-              <button onClick={handleVote('down')}>
-                {vote?.direction === 'down' ? 'X' : ''} Down
-              </button>
-            </div>
-          </li>
+          <GridItem key={id}>
+            <Image
+              url={url}
+              isFavourite={Boolean(favourite)}
+              onFavouriteClick={handleFavourite}
+              voteCount={voteCounts[id] || 0}
+              onUpvote={handleVote('up')}
+              onDownvote={handleVote('down')}
+              voteDirection={vote?.direction}
+            />
+          </GridItem>
         );
       })}
-    </ul>
+    </Grid>
   );
 };

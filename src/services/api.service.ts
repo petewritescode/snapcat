@@ -1,6 +1,8 @@
-import { USER_ID } from '../constants/user.constants';
 import { RequestMethod } from '../types/request-method.type';
 import { VoteDirection } from '../types/vote-direction.type';
+import { getUserId } from '../utils/get-user-id.util';
+
+const userId = getUserId();
 
 const makeRequest = (
   endpoint: string,
@@ -22,20 +24,20 @@ export const getImages = () => makeRequest('images?limit=100');
 
 export const addImage = (image: File) => {
   const body = new FormData();
-  body.append('sub_id', USER_ID);
+  body.append('sub_id', userId);
   body.append('file', image);
 
   return makeRequest('images/upload', 'POST', undefined, body);
 };
 
 export const getFavourites = () =>
-  makeRequest(`favourites?limit=100&sub_id=${USER_ID}`);
+  makeRequest(`favourites?limit=100&sub_id=${userId}`);
 
 export const addFavourite = (imageId: string) => {
   const headers = { 'Content-Type': 'application/json' };
 
   const body = JSON.stringify({
-    sub_id: USER_ID,
+    sub_id: userId,
     image_id: imageId,
   });
 
@@ -52,7 +54,7 @@ export const addVote = (imageId: string, direction: VoteDirection) => {
   const headers = { 'Content-Type': 'application/json' };
 
   const body = JSON.stringify({
-    sub_id: USER_ID,
+    sub_id: userId,
     image_id: imageId,
     value: direction === 'up' ? 1 : 0,
   });

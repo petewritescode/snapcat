@@ -1,3 +1,3 @@
-export interface Scores {
+export interface VoteCounts {
   [imageId: string]: number;
 }

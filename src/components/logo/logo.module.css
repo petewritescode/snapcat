@@ -1,0 +1,41 @@
+.logo {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
+  transform: rotate(-15deg);
+  background-color: #ffffff;
+  color: #e60023;
+  font-size: 1.9rem;
+  transition: transform 250ms;
+}
+
+.copy {
+  display: none;
+}
+
+.logo:hover .icon {
+  transform: rotate(-25deg);
+}
+
+@media (min-width: 500px) {
+  .copy {
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .highlight {
+    color: #ffffff;
+  }
+}

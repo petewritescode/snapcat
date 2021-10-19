@@ -49,7 +49,8 @@ const votesSlice = createSlice({
         state.loading = true;
 
         const votes = state.votes.filter(
-          ({ imageId }) => imageId !== action.payload.imageId
+          ({ imageId, isCurrentUser }) =>
+            imageId !== action.payload.imageId || !isCurrentUser
         );
 
         votes.push({
@@ -75,7 +76,7 @@ const votesSlice = createSlice({
         state.loading = false;
 
         const vote = state.votes.find(
-          ({ imageId }) => imageId === action.payload.imageId
+          ({ id, imageId }) => !id && imageId === action.payload.imageId
         );
 
         if (vote) {
@@ -90,7 +91,8 @@ const votesSlice = createSlice({
       reducer: (state, action: PayloadAction<string>) => {
         state.loading = false;
         state.votes = state.votes.filter(
-          ({ imageId }) => imageId !== action.payload
+          ({ imageId, isCurrentUser }) =>
+            imageId !== action.payload || !isCurrentUser
         );
       },
     },
@@ -115,7 +117,9 @@ const votesSlice = createSlice({
       }),
       reducer: (state, action: PayloadAction<number>) => {
         state.loading = false;
-        state.votes = state.votes.filter(({ id }) => id !== action.payload);
+        state.votes = state.votes.filter(
+          ({ id, isCurrentUser }) => id !== action.payload || !isCurrentUser
+        );
       },
     },
     deleteVoteFailure: {

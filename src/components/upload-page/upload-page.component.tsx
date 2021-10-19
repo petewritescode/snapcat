@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 import { imagesSelectors } from '../../store/images/images.selectors';
 import { imagesActions } from '../../store/images/images.slice';
 import { usePrevious } from '../../hooks/previous.hook';
 import { Loader } from '../loader/loader.component';
+import styles from './upload-page.module.css';
 
 export const UploadPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -35,8 +38,23 @@ export const UploadPage: React.FC = () => {
 
   return (
     <>
-      {error && <p>{error}</p>}
-      <input type="file" name="image" onChange={handleChange} />
+      {error && <div className={styles.error}>{error}</div>}
+
+      <label className={styles.label} htmlFor="upload">
+        <div className={styles.icon}>
+          <FontAwesomeIcon icon={faCloudUploadAlt} />
+        </div>
+
+        <div className={styles.copy}>Click here to upload an image</div>
+      </label>
+
+      <input
+        className={styles.input}
+        type="file"
+        id="upload"
+        name="image"
+        onChange={handleChange}
+      />
     </>
   );
 };
