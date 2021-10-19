@@ -10,7 +10,7 @@ export const Container: React.FC<ContainerProps> = ({
   shallow = false,
   children,
 }) => {
-  const classNames = cx(styles.container, { [styles.shallow]: shallow });
+  const className = cx(styles.container, { [styles.shallow]: shallow });
 
-  return <div className={classNames}>{children}</div>;
+  return <div className={className}>{children}</div>;
 };

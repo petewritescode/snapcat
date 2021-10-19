@@ -5,5 +5,9 @@
 }
 
 .message a {
+  color: inherit;
+}
+
+.error {
   color: #e60023;
 }

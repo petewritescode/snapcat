@@ -73,6 +73,10 @@ const imagesSlice = createSlice({
         state.uploadError = action.payload;
       },
     },
+    resetUpload: (state) => {
+      state.uploading = false;
+      state.uploadError = undefined;
+    },
   },
 });
 

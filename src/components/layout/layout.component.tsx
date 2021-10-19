@@ -21,5 +21,18 @@ export const Layout: React.FC = ({ children }) => (
     </header>
 
     <Container>{children}</Container>
+
+    <footer className={styles.footer}>
+      <Container>
+        Built by{' '}
+        <a
+          href="https://github.com/petewritescode"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Pete Williams
+        </a>
+      </Container>
+    </footer>
   </>
 );

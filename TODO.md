@@ -1,13 +1,8 @@
 # TODO
 
-Populate with decent test data.
-Improve types - have one type for API response (matches schema) and one for the data stored as a result of this (e.g. Image).
-Consistency - choose "root" or "app" and use everywhere?
-Split sagas down by state slice, maybe even more to "store" folder.
-Improve service - add params consistently.
-Clear error when navigating away from upload page
+Add favicon and icons.
+Delete unused files from CRA.
 Add eslint
-Update page title in index.html
 Sort out dependencies/dev dependencies.
 Write README
 Delete TODO

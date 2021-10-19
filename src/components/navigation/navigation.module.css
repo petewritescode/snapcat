@@ -1,33 +1,7 @@
 .list {
   display: flex;
 }
+
 .item:not(:last-child) {
   margin-right: 20px;
-}
-
-.link {
-  padding: 10px;
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.link:hover:not(.linkActive) {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.linkActive {
-  background-color: #ffffff;
-  color: #e60023;
-}
-
-.icon {
-  display: none;
-}
-
-@media (min-width: 500px) {
-  .icon {
-    display: inline-block;
-  }
 }

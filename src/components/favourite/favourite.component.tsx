@@ -15,10 +15,11 @@ export const Favourite: React.FC<FavouriteProps> = ({
   onClick,
 }) => {
   const icon = isFavourite ? faHeart : faHeartOutline;
-  const classNames = cx(styles.favourite, { [styles.active]: isFavourite });
+  const label = isFavourite ? 'Unfavourite' : 'Favourite';
+  const className = cx(styles.favourite, { [styles.active]: isFavourite });
 
   return (
-    <button className={classNames} onClick={onClick}>
+    <button className={className} aria-label={label} onClick={onClick}>
       <FontAwesomeIcon icon={icon} className={styles.icon} />
     </button>
   );

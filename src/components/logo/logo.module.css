@@ -16,6 +16,7 @@
   background-color: #ffffff;
   color: #e60023;
   font-size: 1.9rem;
+  outline: 3px solid rgba(255, 255, 255, 0.7);
   transition: transform 250ms;
 }
 

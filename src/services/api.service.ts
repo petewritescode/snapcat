@@ -1,25 +1,29 @@
+import { API_BASE_URL, API_KEY } from '../constants/api.constants';
 import { RequestMethod } from '../types/request-method.type';
 import { VoteDirection } from '../types/vote-direction.type';
 import { getUserId } from '../utils/get-user-id.util';
 
 const userId = getUserId();
 
+const jsonHeaders = {
+  'Content-Type': 'application/json',
+};
+
 const makeRequest = (
-  endpoint: string,
+  resource: string,
   method: RequestMethod = 'GET',
-  headers?: RequestInit['headers'],
-  body?: RequestInit['body']
+  body?: RequestInit['body'],
+  headers?: RequestInit['headers']
 ) =>
-  fetch(`https://api.thecatapi.com/v1/${endpoint}`, {
+  fetch(`${API_BASE_URL}/${resource}`, {
     method,
     headers: {
-      'x-api-key': 'cd0ce337-6ba0-44b3-9a55-ab8eb2cdeb90',
+      'x-api-key': API_KEY,
       ...headers,
     },
     body,
   });
 
-// TODO Build these params in a better way?
 export const getImages = () => makeRequest('images?limit=100');
 
 export const addImage = (image: File) => {
@@ -27,41 +31,37 @@ export const addImage = (image: File) => {
   body.append('sub_id', userId);
   body.append('file', image);
 
-  return makeRequest('images/upload', 'POST', undefined, body);
+  return makeRequest('images/upload', 'POST', body);
 };
 
 export const getFavourites = () =>
-  makeRequest(`favourites?limit=100&sub_id=${userId}`);
+  makeRequest(`favourites?limit=100&sub_id=${encodeURIComponent(userId)}`);
 
 export const addFavourite = (imageId: string) => {
-  const headers = { 'Content-Type': 'application/json' };
-
   const body = JSON.stringify({
     sub_id: userId,
     image_id: imageId,
   });
 
-  return makeRequest('favourites', 'POST', headers, body);
+  return makeRequest('favourites', 'POST', body, jsonHeaders);
 };
 
 export const deleteFavourite = (id: number) => {
-  return makeRequest(`favourites/${id}`, 'DELETE');
+  return makeRequest(`favourites/${encodeURIComponent(id)}`, 'DELETE');
 };
 
 export const getVotes = () => makeRequest('votes');
 
 export const addVote = (imageId: string, direction: VoteDirection) => {
-  const headers = { 'Content-Type': 'application/json' };
-
   const body = JSON.stringify({
     sub_id: userId,
     image_id: imageId,
     value: direction === 'up' ? 1 : 0,
   });
 
-  return makeRequest('votes', 'POST', headers, body);
+  return makeRequest('votes', 'POST', body, jsonHeaders);
 };
 
 export const deleteVote = (id: number) => {
-  return makeRequest(`votes/${id}`, 'DELETE');
+  return makeRequest(`votes/${encodeURIComponent(id)}`, 'DELETE');
 };

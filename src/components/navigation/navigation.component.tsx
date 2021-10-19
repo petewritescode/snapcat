@@ -1,36 +1,18 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { faHome, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import styles from './navigation.module.css';
-import cx from 'classnames';
+import { NavigationLink } from './navigation-link.component';
 
-export const Navigation: React.FC = () => {
-  const route = useRouteMatch();
-  const isUpload = route.path === '/upload';
+export const Navigation: React.FC = () => (
+  <nav className={styles.navigation}>
+    <ul className={styles.list}>
+      <li className={styles.item}>
+        <NavigationLink to="/" icon={faHome} label="Home" />
+      </li>
 
-  return (
-    <nav className={styles.navigation}>
-      <ul className={styles.list}>
-        <li className={styles.item}>
-          <Link
-            to="/"
-            className={cx(styles.link, { [styles.linkActive]: !isUpload })}
-          >
-            <FontAwesomeIcon icon={faHome} className={styles.icon} /> Home
-          </Link>
-        </li>
-
-        <li className={styles.item}>
-          <Link
-            to="/upload"
-            className={cx(styles.link, { [styles.linkActive]: isUpload })}
-          >
-            <FontAwesomeIcon icon={faPlusSquare} className={styles.icon} />{' '}
-            Upload
-          </Link>
-        </li>
-      </ul>
-    </nav>
-  );
-};
+      <li className={styles.item}>
+        <NavigationLink to="/upload" icon={faPlusCircle} label="Add" />
+      </li>
+    </ul>
+  </nav>
+);

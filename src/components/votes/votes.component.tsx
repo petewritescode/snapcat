@@ -1,9 +1,8 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { VoteDirection } from '../../types/vote-direction.type';
-import cx from 'classnames';
 import styles from './votes.module.css';
+import { VoteButton } from './vote-button.component';
 
 interface VotesProps {
   count: number;
@@ -17,26 +16,22 @@ export const Votes: React.FC<VotesProps> = ({
   onUpvote,
   onDownvote,
   voteDirection,
-}) => {
-  return (
-    <div className={styles.votes}>
-      <button
-        className={cx(styles.button, {
-          [styles.active]: voteDirection === 'up',
-        })}
-        onClick={onUpvote}
-      >
-        <FontAwesomeIcon icon={faArrowUp} className={styles.icon} />
-      </button>
-      <div className={styles.count}>{count}</div>
-      <button
-        className={cx(styles.button, {
-          [styles.active]: voteDirection === 'down',
-        })}
-        onClick={onDownvote}
-      >
-        <FontAwesomeIcon icon={faArrowDown} className={styles.icon} />
-      </button>
-    </div>
-  );
-};
+}) => (
+  <div className={styles.votes}>
+    <VoteButton
+      icon={faArrowUp}
+      label="Vote up"
+      isActive={voteDirection === 'up'}
+      onClick={onUpvote}
+    />
+
+    <div className={styles.count}>{count}</div>
+
+    <VoteButton
+      icon={faArrowDown}
+      label="Vote down"
+      isActive={voteDirection === 'down'}
+      onClick={onDownvote}
+    />
+  </div>
+);

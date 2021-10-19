@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './image.module.css';
+import styles from './image-card.module.css';
 import { Favourite } from '../favourite/favourite.component';
 import { Votes } from '../votes/votes.component';
 import { VoteDirection } from '../../types/vote-direction.type';
 
-interface ImageProps {
+interface ImageCardProps {
   url: string;
   isFavourite: boolean;
   onFavouriteClick: () => void;
@@ -14,7 +14,7 @@ interface ImageProps {
   voteDirection?: VoteDirection;
 }
 
-export const Image: React.FC<ImageProps> = ({
+export const ImageCard: React.FC<ImageCardProps> = ({
   url,
   isFavourite,
   onFavouriteClick,
@@ -23,7 +23,7 @@ export const Image: React.FC<ImageProps> = ({
   onDownvote,
   voteDirection,
 }) => (
-  <div className={styles.image} style={{ backgroundImage: `url(${url})` }}>
+  <div className={styles.imageCard} style={{ backgroundImage: `url(${url})` }}>
     <div className={styles.favourite}>
       <Favourite isFavourite={isFavourite} onClick={onFavouriteClick} />
     </div>
