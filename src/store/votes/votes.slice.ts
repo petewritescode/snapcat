@@ -96,7 +96,6 @@ const votesSlice = createSlice({
         );
       },
     },
-
     deleteVote: {
       prepare: (id: number) => ({
         payload: id,

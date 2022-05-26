@@ -1,6 +1,6 @@
 # Snapcat
 
-Snaps. Of cats. Favourite them, like them, add your own.
+Snaps. Of cats. Favourite them, vote on them, add your own.
 
 ## Try it out
 
