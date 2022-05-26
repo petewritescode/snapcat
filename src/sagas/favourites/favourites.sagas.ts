@@ -19,8 +19,8 @@ function* getFavouritesSaga() {
           favourites.map<Favourite>((favourite) => ({
             id: favourite.id,
             imageId: favourite.image_id,
-          }))
-        )
+          })),
+        ),
     );
 
     yield put(favouritesActions.getFavouritesSuccess(favourites));
@@ -34,7 +34,7 @@ function* addFavouriteSaga(action: { payload: string }) {
     const id: number = yield call(() =>
       addFavourite(action.payload)
         .then((response) => response.json())
-        .then((favourite: ApiNewFavourite) => favourite.id)
+        .then((favourite: ApiNewFavourite) => favourite.id),
     );
 
     if (id) {

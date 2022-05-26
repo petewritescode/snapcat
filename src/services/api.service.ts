@@ -13,7 +13,7 @@ const makeRequest = (
   resource: string,
   method: RequestMethod = 'GET',
   body?: RequestInit['body'],
-  headers?: RequestInit['headers']
+  headers?: RequestInit['headers'],
 ) =>
   fetch(`${API_BASE_URL}/${resource}`, {
     method,

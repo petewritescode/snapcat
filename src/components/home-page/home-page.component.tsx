@@ -53,7 +53,7 @@ export const HomePage: React.FC = () => {
     }
 
     const favourite = favourites.find(
-      (favourite) => favourite.imageId === imageId
+      (favourite) => favourite.imageId === imageId,
     );
 
     const action = favourite?.id

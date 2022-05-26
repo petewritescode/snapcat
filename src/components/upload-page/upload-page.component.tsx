@@ -28,7 +28,7 @@ export const UploadPage: React.FC = () => {
     () => () => {
       dispatch(imagesActions.resetUpload());
     },
-    [dispatch]
+    [dispatch],
   );
 
   if (uploading) {

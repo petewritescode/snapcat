@@ -14,8 +14,8 @@ function* getImagesSaga() {
           images.map<Image>((image) => ({
             id: image.id,
             url: image.url,
-          }))
-        )
+          })),
+        ),
     );
 
     yield put(imagesActions.getImagesSuccess(images));
@@ -38,8 +38,8 @@ function* addImageSaga(action: { payload: File }) {
   } catch {
     yield put(
       imagesActions.addImageFailure(
-        'There was an error uploading your file, please try again'
-      )
+        'There was an error uploading your file, please try again',
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@
   "name": "snapcat",
   "version": "0.1.0",
   "private": true,
+  "prettier": "prettier-config-pwc",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
@@ -20,7 +21,7 @@
     "@types/redux-saga": "^0.10.5",
     "@types/uuid": "^8.3.1",
     "classnames": "^2.3.1",
-    "prettier": "2.4.1",
+    "prettier": "2.6.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
@@ -37,7 +38,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write \"src\""
+    "format": "prettier --list-different --write .",
+    "format:check": "prettier --check ."
   },
   "eslintConfig": {
     "extends": [
@@ -56,5 +58,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prettier-config-pwc": "^1.0.2"
   }
 }

@@ -54,12 +54,12 @@ const favouritesSlice = createSlice({
       }),
       reducer: (
         state,
-        action: PayloadAction<{ imageId: string; id: number }>
+        action: PayloadAction<{ imageId: string; id: number }>,
       ) => {
         state.loading = false;
 
         const favourite = state.favourites.find(
-          ({ imageId }) => imageId === action.payload.imageId
+          ({ imageId }) => imageId === action.payload.imageId,
         );
 
         if (favourite) {
@@ -74,7 +74,7 @@ const favouritesSlice = createSlice({
       reducer: (state, action: PayloadAction<string>) => {
         state.loading = false;
         state.favourites = state.favourites.filter(
-          ({ imageId }) => imageId !== action.payload
+          ({ imageId }) => imageId !== action.payload,
         );
       },
     },
@@ -86,7 +86,7 @@ const favouritesSlice = createSlice({
         state.loading = true;
 
         const favourite = state.favourites.find(
-          ({ id }) => id === action.payload
+          ({ id }) => id === action.payload,
         );
 
         if (favourite) {
@@ -101,7 +101,7 @@ const favouritesSlice = createSlice({
       reducer: (state, action: PayloadAction<number>) => {
         state.loading = false;
         state.favourites = state.favourites.filter(
-          ({ id }) => id !== action.payload
+          ({ id }) => id !== action.payload,
         );
       },
     },
@@ -113,7 +113,7 @@ const favouritesSlice = createSlice({
         state.loading = false;
 
         const favourite = state.favourites.find(
-          ({ id }) => id === action.payload
+          ({ id }) => id === action.payload,
         );
 
         if (favourite) {

@@ -20,8 +20,8 @@ function* getVotesSaga() {
             imageId: vote.image_id,
             isCurrentUser: vote.sub_id === userId,
             direction: vote.value === 1 ? 'up' : 'down',
-          }))
-        )
+          })),
+        ),
     );
 
     yield put(votesActions.getVotesSuccess(votes));
@@ -37,7 +37,7 @@ function* addVoteSaga(action: {
     const id: number = yield call(() =>
       addVote(action.payload.imageId, action.payload.direction)
         .then((response) => response.json())
-        .then((vote: ApiNewVote) => vote.id)
+        .then((vote: ApiNewVote) => vote.id),
     );
 
     if (id) {

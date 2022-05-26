@@ -8,11 +8,11 @@ const getError = createSelector(getSlice, (slice) => slice.error);
 const getVotes = createSelector(getSlice, (slice) => slice.votes);
 
 const getActiveVotes = createSelector(getVotes, (votes) =>
-  votes.filter(({ toDelete }) => !toDelete)
+  votes.filter(({ toDelete }) => !toDelete),
 );
 
 const getUserVotes = createSelector(getActiveVotes, (votes) =>
-  votes.filter(({ isCurrentUser }) => isCurrentUser)
+  votes.filter(({ isCurrentUser }) => isCurrentUser),
 );
 
 const getVoteCounts = createSelector(getActiveVotes, (votes) =>
@@ -24,7 +24,7 @@ const getVoteCounts = createSelector(getActiveVotes, (votes) =>
     acc[vote.imageId] += vote.direction === 'up' ? 1 : -1;
 
     return acc;
-  }, {})
+  }, {}),
 );
 
 export const votesSelectors = {
